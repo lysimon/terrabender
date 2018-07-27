@@ -1,0 +1,10 @@
+version: '3'
+services:
+  terrabender:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - "8080:8080"
+    environment:
+     - CONFIG_WEBSERVER_ENABLED="true"
