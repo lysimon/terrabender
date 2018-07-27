@@ -7,4 +7,12 @@ services:
     ports:
      - "8080:8080"
     environment:
-     - CONFIG_WEBSERVER_ENABLED="true"
+     - CONFIG_GITHUB_ENABLED=true
+     - CONFIG_GITHUB_APITOKEN
+     - CONFIG_WEBSERVER_ENABLED=true
+     - CONFIG_PLAN_ENABLED=true
+     - CONFIG_APPLY_ENABLED=true
+     - CONFIG_REBASE_ENABLED=true
+     - CONFIG_REBASE_REQUIRED=false
+     - CONFIG_MERGE_ENABLED=true
+     - CONFIG_GIT_API_KEY

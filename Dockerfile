@@ -4,7 +4,8 @@ RUN go get -d -v golang.org/x/net/html &&\
     go get -d -v github.com/robfig/cron &&\
     go get -d -v github.com/aws/aws-sdk-go &&\
     go get github.com/gorilla/mux &&\
-    go get -d -v gopkg.in/yaml.v2
+    go get -d -v gopkg.in/yaml.v2 &&\
+    go get -d -v github.com/google/go-github/github
 
 COPY ./cmd    /go/src/github.com/lysimon/terrabender/cmd
 COPY ./pkg    /go/src/github.com/lysimon/terrabender/pkg

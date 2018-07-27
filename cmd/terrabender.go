@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/gorilla/mux"
+	"github.com/lysimon/terrabender/pkg/config"
 	"github.com/lysimon/terrabender/pkg/status"
 )
 
@@ -18,21 +18,44 @@ func main() {
 	//c.Start()
 	//defer c.Stop()
 
+	// Checking that git config api key is set
+	if config.GetStringConfiguration("CONFIG_GIT_API_KEY") == "" {
+		log.Fatal("Expected parameter CONFIG_GIT_API_KEY")
+	}
 	// Start webserver if dae
-	webserver()
+	if config.GetBooleanConfiguration("CONFIG_DAEMON_ENABLED") {
+		log.Print("Running as a daemon agent, program will not stop")
+		// starting daemon for verify, rebase, merge, apply
+		webserver()
+
+	} else {
+		log.Print("Daemon disabled, only going to the required job")
+
+	}
 }
 
 func webserver() {
 	// Start webserver only if CONFIG_WEBSERVER_ENABLED is true
-	if os.Getenv("CONFIG_WEBSERVER_ENABLED") == "true" {
+	if config.GetBooleanConfiguration("CONFIG_WEBSERVER_ENABLED") {
 		log.Print("terrabender.webserver start")
+
 		router := mux.NewRouter()
 		router.HandleFunc("/status", status.Status)
 
 		log.Fatal(http.ListenAndServe(":8080", router))
 	} else {
-		log.Print("environment variable CONFIG_WEBSERVER_ENABLED is not true, webserver is disabled")
-		log.Print(os.Getenv("CONFIG_WEBSERVER_ENABLED"))
+		log.Print("Webserver disabled")
 	}
+}
+
+func plan() {
+
+}
+
+func apply() {
+
+}
+
+func rebase() {
 
 }
