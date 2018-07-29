@@ -11,12 +11,12 @@ var GitProvider = ""
 func Init() {
 
 	// Checking that git config api key is set
-	GitApiKey = getStringConfiguration("CONFIG_GIT_API_KEY")
+	GitApiKey = GetStringConfiguration("CONFIG_GIT_API_KEY")
 	if GitApiKey == "" {
 		log.Fatal("Expected environment variable CONFIG_GIT_API_KEY, please configure it")
 	}
 	// Configure git provider
-	GitProvider = getStringConfiguration("CONFIG_GIT_PROVIDER")
+	GitProvider = GetStringConfiguration("CONFIG_GIT_PROVIDER")
 	switch GitProvider {
 	case "github":
 		log.Printf("Using github")
@@ -37,6 +37,6 @@ func GetBooleanConfiguration(environment string) bool {
 	}
 }
 
-func getStringConfiguration(environment string) string {
+func GetStringConfiguration(environment string) string {
 	return os.Getenv(environment)
 }
