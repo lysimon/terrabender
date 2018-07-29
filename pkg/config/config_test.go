@@ -5,6 +5,13 @@ import (
 	"testing"
 )
 
+func TestInit(t *testing.T) {
+	os.Setenv("CONFIG_GIT_API_KEY", "someapikey")
+	os.Setenv("CONFIG_GIT_PROVIDER", "github")
+	os.Setenv("CONFIG_GIT_URLS", "github.com/lysimon/terrabender")
+	Init()
+}
+
 func TestGetBooleanConfiguration(t *testing.T) {
 	result := GetBooleanConfiguration("NOVALUE_CONFIG")
 	if result {
