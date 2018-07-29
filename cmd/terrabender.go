@@ -18,10 +18,8 @@ func main() {
 	//c.Start()
 	//defer c.Stop()
 
-	// Checking that git config api key is set
-	if config.GetStringConfiguration("CONFIG_GIT_API_KEY") == "" {
-		log.Fatal("Expected parameter CONFIG_GIT_API_KEY")
-	}
+	config.Init()
+
 	// Start webserver if dae
 	if config.GetBooleanConfiguration("CONFIG_DAEMON_ENABLED") {
 		log.Print("Running as a daemon agent, program will not stop")
