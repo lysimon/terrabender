@@ -1,4 +1,4 @@
-FROM golang:1.7.3 as builder
+FROM golang:1.11.0 as builder
 WORKDIR /builder/
 
 RUN go get -d -v golang.org/x/net/html &&\
