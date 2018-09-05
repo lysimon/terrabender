@@ -13,6 +13,7 @@ COPY ./pkg    /go/src/github.com/lysimon/terrabender/pkg
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app /go/src/github.com/lysimon/terrabender/cmd/terrabender.go
 
+
 FROM alpine:latest
 # Install latest terraform
 RUN apk update && apk upgrade && \
