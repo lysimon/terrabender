@@ -10,3 +10,5 @@ How does the release process works:
 - give permission to terrabender to access terraform git repo, merge pull request, post comment.
 
 For every pull request create, terrabender will do a command, ie terraform plan.
+
+Exemple
